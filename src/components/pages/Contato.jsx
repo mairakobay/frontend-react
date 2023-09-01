@@ -1,22 +1,22 @@
-import Header from "../layout/Header"
-import Sidebar from "../layout/Sidebar"
 import Content from "../layout/Content"
 import Footer from "../layout/Footer"
+import Header from "../layout/Header"
+import Sidebar from "../layout/Sidebar"
 
-
-const QuemSomos = () => {
+const Contato = () => {
     return (
         <>
             <Header />
             <div id="main">
-                <Sidebar />  
+                <Sidebar />
                 <Content>
-                    <h1>Quem Somos</h1>
-                </Content>      
+                    <h1>Contato</h1>   
+                </Content>
+
             </div>
             <Footer />
         </>
     )
 }
 
-export default QuemSomos
+export default Contato

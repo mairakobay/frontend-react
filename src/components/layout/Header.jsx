@@ -1,5 +1,6 @@
 import './Header.css'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import Button from '../ui/Button'
 
 const Header = () => {
   return (
@@ -11,6 +12,8 @@ const Header = () => {
                 <li><NavLink to="/quem-somos">Quem Somos</NavLink></li>
                 <li><NavLink to="/contato">Contato</NavLink></li>
                 <li><NavLink to="/produtos">Produtos</NavLink></li>
+                <li><Button variant="primary">Login</Button></li>
+                <li><Button variant="secondary">Cadastre-se</Button></li>
             </ul>
         </nav>
     </header>

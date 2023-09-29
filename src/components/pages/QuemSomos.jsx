@@ -3,38 +3,39 @@ import Sidebar from "../layout/Sidebar"
 import Content from "../layout/Content"
 import Footer from "../layout/Footer"
 import CardUser from "../ui/CardUser"
-
-const users = [{
-    nome: "Maira Kpbayashi",
-    email: "mairakobay@gmail.com",
-    photo: "https://avatars.githubusercontent.com/u/130098548?v=4"
-},
-{
-    nome: "Maira Kpbayashi",
-    email: "mairakobay@gmail.com",
-    photo: "https://avatars.githubusercontent.com/u/130098548?v=4"
-}
-]
+import { useEffect, useState } from "react"
 
 const QuemSomos = () => {
+
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+
+        const getUsers = async () => {
+            const response = await fetch('localhost:3000/user/list')
+            const data = await response.json()
+            console.log(data.success)
+            console.log(data.users)
+            setUsers(data.users)    
+        }
+        
+        getUsers()
+        
+    }, [])
+
     return (
         <>
             <Header />
             <div id="main">
-                <Sidebar />  
+                <Sidebar />
                 <Content>
-                    <h1>Quem Somos</h1> 
+                    <h1>Quem Somos</h1>
                     {
-                        users.map((user) => {
-                            <CardUser /> 
-
-                        }
-                        )
-                    }                 
-                    <CardUser user={user}/>
-                      
-                    <CardUser />     
-                </Content>      
+                        users.length > 0 ? users.map((user) => {
+                            return <CardUser key={user.id} user={user} />
+                        }): <p>Carregando...</p>
+                    }
+                </Content>
             </div>
             <Footer />
         </>
